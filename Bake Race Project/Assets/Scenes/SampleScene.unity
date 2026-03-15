@@ -1826,7 +1826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2570552237032742078, guid: 2748183b26eb5462ab1b3d094bc13ae9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.07
+      value: 0.136
       objectReference: {fileID: 0}
     - target: {fileID: 2570552237032742078, guid: 2748183b26eb5462ab1b3d094bc13ae9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2669,7 +2669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3586708040040369671, guid: dfa7877a09a8949199d86352f80adc8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.98
+      value: 2.149
       objectReference: {fileID: 0}
     - target: {fileID: 3586708040040369671, guid: dfa7877a09a8949199d86352f80adc8e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3541,7 +3541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058790583731723346, guid: c7e29f9db90054909a07a4b7127fc57d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.09
+      value: 0.127
       objectReference: {fileID: 0}
     - target: {fileID: 8058790583731723346, guid: c7e29f9db90054909a07a4b7127fc57d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3967,7 +3967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _monoscopic: 0
   _sharpenType: 0
-  _enableDynamicResolution: 0
+  _enableDynamicResolution: 1
   minDynamicResolutionScale: 1
   maxDynamicResolutionScale: 1
   quest2MinDynamicResolutionScale: 0.7
@@ -4022,7 +4022,7 @@ MonoBehaviour:
   requestBodyTrackingPermissionOnStartup: 0
   requestFaceTrackingPermissionOnStartup: 0
   requestEyeTrackingPermissionOnStartup: 0
-  requestScenePermissionOnStartup: 0
+  requestScenePermissionOnStartup: 1
   requestRecordAudioPermissionOnStartup: 0
   requestPassthroughCameraAccessPermissionOnStartup: 0
   _localDimming: 1
