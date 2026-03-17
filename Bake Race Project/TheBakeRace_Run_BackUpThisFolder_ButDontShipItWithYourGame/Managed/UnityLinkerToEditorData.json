@@ -84,9 +84,31 @@
             "icon": null
           },
           {
+            "name": "Behaviour",
+            "scenes": [
+              "Assets/Scenes/SampleScene.unity"
+            ],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "IConstraint",
+            "scenes": [],
+            "dependencyType": 1,
+            "icon": null
+          },
+          {
             "name": "Motion",
             "scenes": [],
             "dependencyType": 1,
+            "icon": null
+          },
+          {
+            "name": "PositionConstraint",
+            "scenes": [
+              "Assets/Scenes/SampleScene.unity"
+            ],
+            "dependencyType": 0,
             "icon": null
           },
           {
@@ -121,7 +143,9 @@
           },
           {
             "name": "AudioClip",
-            "scenes": [],
+            "scenes": [
+              "Assets/Scenes/SampleScene.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -141,13 +165,17 @@
           },
           {
             "name": "AudioResource",
-            "scenes": [],
-            "dependencyType": 1,
+            "scenes": [
+              "Assets/Scenes/SampleScene.unity"
+            ],
+            "dependencyType": 0,
             "icon": null
           },
           {
             "name": "AudioSource",
-            "scenes": [],
+            "scenes": [
+              "Assets/Scenes/SampleScene.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -472,7 +500,9 @@
           },
           {
             "name": "SortingGroup",
-            "scenes": [],
+            "scenes": [
+              "Assets/Scenes/SampleScene.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -647,6 +677,12 @@
             "scenes": [],
             "dependencyType": 2,
             "icon": "package/com.unity.modules.jsonserialize"
+          },
+          {
+            "name": "Required by ParticleSystem Module",
+            "scenes": [],
+            "dependencyType": 2,
+            "icon": "package/com.unity.modules.particlesystem"
           },
           {
             "name": "Required by Physics Module",
@@ -986,6 +1022,23 @@
         ]
       },
       {
+        "name": "ParticleSystem",
+        "dependencies": [
+          {
+            "name": "ParticleSystem",
+            "scenes": [],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
+            "name": "ParticleSystemRenderer",
+            "scenes": [],
+            "dependencyType": 0,
+            "icon": null
+          }
+        ]
+      },
+      {
         "name": "Physics",
         "dependencies": [
           {
@@ -998,7 +1051,9 @@
           },
           {
             "name": "CapsuleCollider",
-            "scenes": [],
+            "scenes": [
+              "Assets/Scenes/SampleScene.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -1054,13 +1109,17 @@
           },
           {
             "name": "Rigidbody",
-            "scenes": [],
+            "scenes": [
+              "Assets/Scenes/SampleScene.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
           {
             "name": "SphereCollider",
-            "scenes": [],
+            "scenes": [
+              "Assets/Scenes/SampleScene.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },
@@ -1244,6 +1303,12 @@
             "scenes": [],
             "dependencyType": 2,
             "icon": "package/com.unity.modules.jsonserialize"
+          },
+          {
+            "name": "Required by ParticleSystem Module",
+            "scenes": [],
+            "dependencyType": 2,
+            "icon": "package/com.unity.modules.particlesystem"
           },
           {
             "name": "Required by Physics Module",
