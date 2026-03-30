@@ -46,7 +46,8 @@ public class cookBurger : MonoBehaviour
             {
                 rend.material = cookedMaterial;
                 isCooked = true;
-                timerText.text = "Burger cooked!";
+                timerText.text = "00:00:000";
+                timerText.color = Color.green;
             }
         }
     }
