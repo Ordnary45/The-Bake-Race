@@ -1,59 +1,62 @@
 using UnityEngine;
 
-public class VRFridgeDoorGrab : MonoBehaviour
+public class HandGrabbing : MonoBehaviour
 {
-    public Rigidbody doorRB;
+    public OVRInput.Controller controller;
 
-    public Transform handle;
-
-    public Transform leftHand;
-    public Transform rightHand;
-
-    public float grabDistance = 0.15f;
+    [Header("Settings")]
     public float torqueStrength = 120f;
-    public float damping = 8f;
+    public float grabDistance = 0.4f;
 
-    private bool leftGrabbing;
-    private bool rightGrabbing;
+    private Rigidbody doorRB;
+    private Transform doorTransform;
+    private HingeJoint doorHinge;
+
+    private bool isGrabbing;
 
     void Update()
     {
-        leftGrabbing = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch);
-        rightGrabbing = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch);
+        bool gripHeld = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, controller);
+
+        if (doorRB == null)
+        {
+            FindDoor();
+        }
+
+        if (doorRB == null) return;
+
+        float dist = Vector3.Distance(transform.position, doorTransform.position);
+
+        isGrabbing = gripHeld && dist < grabDistance;
     }
 
     void FixedUpdate()
     {
-        Vector3 torque = Vector3.zero;
+        if (!isGrabbing || doorRB == null || doorHinge == null) return;
 
-        // LEFT HAND
-        if (leftGrabbing)
-        {
-            float dist = Vector3.Distance(leftHand.position, handle.position);
+        // hinge axis in world space
+        Vector3 axis = doorTransform.TransformDirection(doorHinge.axis);
 
-            if (dist < grabDistance)
-            {
-                Vector3 dir = leftHand.position - handle.position;
-                torque += Vector3.Cross(Vector3.up, dir);
-            }
-        }
+        // hand direction relative to door
+        Vector3 toHand = transform.position - doorTransform.position;
 
-        // RIGHT HAND
-        if (rightGrabbing)
-        {
-            float dist = Vector3.Distance(rightHand.position, handle.position);
+        // remove influence outside hinge axis
+        Vector3 projected = Vector3.ProjectOnPlane(toHand, axis);
 
-            if (dist < grabDistance)
-            {
-                Vector3 dir = rightHand.position - handle.position;
-                torque += Vector3.Cross(Vector3.up, dir);
-            }
-        }
+        // compute rotation direction
+        float torque = Vector3.Dot(Vector3.Cross(axis, projected), axis);
 
-        // Apply torque
-        doorRB.AddTorque(torque * torqueStrength, ForceMode.Acceleration);
+        doorRB.AddTorque(axis * torque * torqueStrength, ForceMode.Acceleration);
+    }
 
-        // damping (stops spinning forever)
-        doorRB.angularVelocity *= (1f - Time.fixedDeltaTime * damping);
+    void FindDoor()
+    {
+        GameObject door = GameObject.FindGameObjectWithTag("Door");
+
+        if (door == null) return;
+
+        doorTransform = door.transform;
+        doorRB = door.GetComponent<Rigidbody>();
+        doorHinge = door.GetComponent<HingeJoint>();
     }
 }
