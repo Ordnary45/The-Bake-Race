@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using EzySlice;
@@ -8,17 +8,21 @@ public class SliceableObj : MonoBehaviour
 {
     [Header("Slice Settings")]
     public Material crossSectionMaterial;
-    public int maxSlices = 5; // Maximum number of times this object can be sliced
+    public int maxSlices = 4; // Maximum number of times this object can be sliced
     public float minSliceVelocity = 0.5f;
     public bool canBeSliced = true;
+    public float sliceInvincibilityTime = 0.5f; // Time before object can be sliced again
 
     [Header("Physics Settings")]
-    public float mass = 1f;
+    public float mass = 2f;
     public float bounceForce = 2f;
     public float upwardForceMultiplier = 0.5f;
+    public AudioClip sliceSound;
+    public GameObject ISDK;
 
     private int sliceCount = 0;
     private List<GameObject> slicedPieces = new List<GameObject>();
+    private float lastSliceTime = -999f;
 
     public int SliceCount => sliceCount;
     public bool IsSliceable => canBeSliced && sliceCount < maxSlices;
@@ -38,6 +42,7 @@ public class SliceableObj : MonoBehaviour
         {
             crossSectionMaterial = GetDefaultCrossSectionMaterial();
         }
+        lastSliceTime = Time.time;
     }
 
     Material GetDefaultCrossSectionMaterial()
@@ -53,6 +58,16 @@ public class SliceableObj : MonoBehaviour
         return defaultMat;
     }
 
+    public void PrepareForSlice()
+    {
+        // Play slice effects
+        if (sliceSound != null)
+        {
+            AudioSource.PlayClipAtPoint(sliceSound, transform.position);
+        }
+
+    }
+
     public void RegisterSlicedPiece(GameObject piece)
     {
         sliceCount++;
@@ -62,12 +77,33 @@ public class SliceableObj : MonoBehaviour
 
             // Add cuttable component to the new piece
             SliceableObj newSliceable = piece.AddComponent<SliceableObj>();
+
+            newSliceable.StartCoroutine(newSliceable.TemporaryDisableSlicing(sliceInvincibilityTime));
             newSliceable.crossSectionMaterial = crossSectionMaterial;
             newSliceable.maxSlices = maxSlices - sliceCount;
             newSliceable.minSliceVelocity = minSliceVelocity;
             newSliceable.mass = mass / 2f; // Pieces are lighter
             newSliceable.bounceForce = bounceForce;
             newSliceable.upwardForceMultiplier = upwardForceMultiplier;
+            newSliceable.sliceInvincibilityTime = sliceInvincibilityTime;
+            newSliceable.ISDK = ISDK;
+            /*
+            GameObject parent = Instantiate(transform.parent.gameObject);
+            Debug.Log("Parent: " + parent.transform.GetChild(0));
+            Destroy(parent.transform.GetChild(0).gameObject);
+            piece.transform.position = parent.transform.position;
+            newSliceable.transform.SetParent(parent.transform);
+            */
+            //GameObject copy = Instantiate(ISDK,piece.transform.parent);
+            //copy.transform.SetSiblingIndex(ISDK.transform.GetSiblingIndex() + 1);
+
         }
+    }
+
+    public IEnumerator TemporaryDisableSlicing(float duration)
+    {
+        canBeSliced = false;
+        yield return new WaitForSeconds(duration);
+        canBeSliced = true;
     }
 }

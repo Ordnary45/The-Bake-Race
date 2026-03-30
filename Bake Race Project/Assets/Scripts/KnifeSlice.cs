@@ -37,12 +37,15 @@ public class KnifeSlice : MonoBehaviour
     {
         if (isSlicing) return;
 
-        bool hasHit = Physics.Linecast(startPoint.position, endPoint.position, out RaycastHit hit, sliceable);
+        Ray ray = new Ray(startPoint.position, endPoint.position - startPoint.position);
+        bool hasHit = Physics.Raycast(ray, out RaycastHit hit, Vector3.Distance(startPoint.position, endPoint.position), sliceable);
+
         if(hasHit)
         {
+            //Debug.Log($"Hit: {hit.transform.name}");
+
             GameObject target = hit.transform.gameObject;
             SliceableObj cuttable = target.GetComponent<SliceableObj>();
-            target = cuttable.gameObject;
 
             if (cuttable == null || !cuttable.IsSliceable)
                 return;
@@ -59,6 +62,19 @@ public class KnifeSlice : MonoBehaviour
             StartCoroutine(SliceCoroutine(target, cuttable, velocity));
         }
 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        SliceableObj cuttable = other.GetComponent<SliceableObj>();
+        if (cuttable != null && cuttable.IsSliceable)
+        {
+            Vector3 velocity = velocityEstimator.GetVelocityEstimate();
+            if (velocity.magnitude >= minVelocityForCut)
+            {
+                StartCoroutine(SliceCoroutine(cuttable.gameObject, cuttable, velocity));
+            }
+        }
     }
 
     IEnumerator SliceCoroutine(GameObject target, SliceableObj cuttable, Vector3 velocity)
@@ -92,24 +108,108 @@ public class KnifeSlice : MonoBehaviour
             }
         }
 
+        cuttable.PrepareForSlice();
         SlicedHull hull = target.Slice(endPoint.position, planeNormal);
 
         if (hull != null)
         {
+            // Store original parent and its properties
+            Transform originalParent = target.transform.parent;
+            Vector3 originalParentPosition = originalParent != null ? originalParent.position : Vector3.zero;
+            Quaternion originalParentRotation = originalParent != null ? originalParent.rotation : Quaternion.identity;
+            Vector3 originalParentScale = originalParent != null ? originalParent.localScale : Vector3.one;
+
+            // Store the ISDK sibling reference
+            GameObject originalISDK = cuttable.ISDK;
+
+            // Store the original sibling index to maintain order
+            int originalSiblingIndex = target.transform.GetSiblingIndex();
+
             Collider originalCollider = target.GetComponent<Collider>();
             if (originalCollider != null)
                 originalCollider.enabled = false;
 
+            // Create the sliced hulls
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMat);
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMat);
 
+            // Create parent copy for upper hull
+            GameObject upperParent = null;
+            if (originalParent != null)
+            {
+                // Instantiate a copy of the original parent
+                upperParent = Instantiate(originalParent.gameObject, originalParentPosition, originalParentRotation);
+                upperParent.transform.localScale = originalParentScale;
+                upperParent.name = originalParent.name + upperHull.name;
+                Destroy(upperParent.transform.GetChild(0).gameObject);
+            }
+            else
+            {
+                // If no parent, create a new empty parent
+                upperParent = new GameObject("SlicedPiece_Upper");
+                upperParent.transform.position = Vector3.zero;
+            }
+
+            // Create parent copy for lower hull
+            GameObject lowerParent = null;
+            if (originalParent != null)
+            {
+                // Instantiate a copy of the original parent
+                lowerParent = Instantiate(originalParent.gameObject, originalParentPosition, originalParentRotation);
+                lowerParent.transform.localScale = originalParentScale;
+                lowerParent.name = originalParent.name + lowerHull.name;
+                Destroy(lowerParent.transform.GetChild(0).gameObject);
+            }
+            else
+            {
+                // If no parent, create a new empty parent
+                lowerParent = new GameObject("SlicedPiece_Lower");
+                lowerParent.transform.position = Vector3.zero;
+            }
+
+            // Set up upper hull
+            upperHull.transform.SetParent(upperParent.transform);
+            upperHull.transform.localScale = target.transform.localScale;
+            upperHull.transform.rotation = target.transform.rotation;
+            upperHull.transform.localPosition = target.transform.localPosition;
+
+            // Set up lower hull
+            lowerHull.transform.SetParent(lowerParent.transform);
+            lowerHull.transform.localScale = target.transform.localScale;
+            lowerHull.transform.rotation = target.transform.rotation;
+            lowerHull.transform.localPosition = target.transform.localPosition;
+
+            // Apply slice effects and physics
             SetSliced(upperHull, cuttable, velocity, planeNormal);
             SetSliced(lowerHull, cuttable, velocity, -planeNormal);
 
+            // Register the pieces (this will create copies of the ISDK objects)
             cuttable.RegisterSlicedPiece(upperHull);
             cuttable.RegisterSlicedPiece(lowerHull);
 
-            Destroy(target);
+            // Copy any additional components from original parent to new parents
+            if (originalParent != null)
+            {
+                CopyParentComponents(originalParent.gameObject, upperParent);
+                CopyParentComponents(originalParent.gameObject, lowerParent);
+            }
+
+            // Position the new parents at the original parent's position
+            if (originalParent != null)
+            {
+                upperParent.transform.position = originalParent.position;
+                upperParent.transform.rotation = originalParent.rotation;
+                lowerParent.transform.position = originalParent.position;
+                lowerParent.transform.rotation = originalParent.rotation;
+            }
+
+            // Destroy the original ISDK if it exists
+            if (originalISDK != null)
+            {
+                Destroy(originalISDK);
+            }
+
+            Destroy(target.transform.parent.gameObject);
         }
     }
 
@@ -165,16 +265,38 @@ public class KnifeSlice : MonoBehaviour
                 }
             }
         }
+    }
 
-        // Add knife slice component to allow further cutting
-        KnifeSlice sliceScript = piece.AddComponent<KnifeSlice>();
-        sliceScript.startPoint = startPoint;
-        sliceScript.endPoint = endPoint;
-        sliceScript.velocityEstimator = velocityEstimator;
-        sliceScript.sliceable = sliceable;
-        sliceScript.defaultCrossSectionMaterial = defaultCrossSectionMaterial;
-        sliceScript.minVelocityForCut = minVelocityForCut;
-        sliceScript.sliceCooldown = sliceCooldown;
-        sliceScript.upwardForceMultiplier = upwardForceMultiplier;
+    // Helper method to copy components from original parent to new parent
+    void CopyParentComponents(GameObject sourceParent, GameObject destParent)
+    {
+        // Copy all components except Transform
+        Component[] components = sourceParent.GetComponents<Component>();
+        foreach (Component component in components)
+        {
+            if (component is Transform)
+                continue;
+
+            System.Type componentType = component.GetType();
+            Component newComponent = destParent.GetComponent(componentType);
+
+            if (newComponent == null)
+            {
+                newComponent = destParent.AddComponent(componentType);
+            }
+
+            // Copy public fields
+            foreach (var field in componentType.GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance))
+            {
+                try
+                {
+                    field.SetValue(newComponent, field.GetValue(component));
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogWarning($"Failed to copy field {field.Name}: {e.Message}");
+                }
+            }
+        }
     }
 }
