@@ -1,62 +1,75 @@
 using UnityEngine;
 
-public class HandGrabbing : MonoBehaviour
+public class DoorHandle : MonoBehaviour
 {
     public OVRInput.Controller controller;
 
-    [Header("Settings")]
-    public float torqueStrength = 120f;
-    public float grabDistance = 0.4f;
+    public float grabDistance = 2f;
+    public float rotationSpeed = 8f;
+    public float torqueStrength = 15f;
 
     private Rigidbody doorRB;
-    private Transform doorTransform;
-    private HingeJoint doorHinge;
+    private HingeJoint hinge;
+    private Transform door;
 
     private bool isGrabbing;
+    private float lastAngle;
+
+    void Start()
+    {
+        GameObject doorObj = GameObject.FindGameObjectWithTag("Door");
+
+        if (doorObj == null)
+        {
+            Debug.LogError("Door not found!");
+            return;
+        }
+
+        door = doorObj.transform;
+        doorRB = doorObj.GetComponent<Rigidbody>();
+        hinge = doorObj.GetComponent<HingeJoint>();
+    }
 
     void Update()
     {
-        bool gripHeld = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, controller);
+        if (door == null) return;
 
-        if (doorRB == null)
+        bool vrGrab = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, controller);
+
+        float dist = Vector3.Distance(transform.position, door.position);
+
+        if (vrGrab && dist < grabDistance)
         {
-            FindDoor();
+            if (!isGrabbing)
+            {
+                isGrabbing = true;
+                lastAngle = GetHandAngle();
+            }
         }
-
-        if (doorRB == null) return;
-
-        float dist = Vector3.Distance(transform.position, doorTransform.position);
-
-        isGrabbing = gripHeld && dist < grabDistance;
+        else
+        {
+            isGrabbing = false;
+        }
     }
 
     void FixedUpdate()
     {
-        if (!isGrabbing || doorRB == null || doorHinge == null) return;
+        if (!isGrabbing || doorRB == null || hinge == null) return;
 
-        // hinge axis in world space
-        Vector3 axis = doorTransform.TransformDirection(doorHinge.axis);
+        float currentAngle = GetHandAngle();
 
-        // hand direction relative to door
-        Vector3 toHand = transform.position - doorTransform.position;
+        float delta = Mathf.DeltaAngle(lastAngle, currentAngle);
 
-        // remove influence outside hinge axis
-        Vector3 projected = Vector3.ProjectOnPlane(toHand, axis);
+        Vector3 axis = door.TransformDirection(hinge.axis);
 
-        // compute rotation direction
-        float torque = Vector3.Dot(Vector3.Cross(axis, projected), axis);
+        doorRB.AddTorque(axis * delta * torqueStrength, ForceMode.VelocityChange);
 
-        doorRB.AddTorque(axis * torque * torqueStrength, ForceMode.Acceleration);
+        lastAngle = currentAngle;
     }
 
-    void FindDoor()
+    float GetHandAngle()
     {
-        GameObject door = GameObject.FindGameObjectWithTag("Door");
-
-        if (door == null) return;
-
-        doorTransform = door.transform;
-        doorRB = door.GetComponent<Rigidbody>();
-        doorHinge = door.GetComponent<HingeJoint>();
+        Vector3 local = door.InverseTransformPoint(transform.position);
+        return Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg;
     }
 }
