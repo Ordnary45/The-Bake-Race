@@ -4,9 +4,9 @@ public class DoorHandle : MonoBehaviour
 {
     public OVRInput.Controller controller;
 
-    public float grabDistance = 2f;
-    public float rotationSpeed = 8f;
-    public float torqueStrength = 15f;
+    public float grabDistance = 0.5f;
+    public float rotationSpeed = 4f;
+    public float torqueStrength = 1f;
 
     private Rigidbody doorRB;
     private HingeJoint hinge;
@@ -34,7 +34,8 @@ public class DoorHandle : MonoBehaviour
     {
         if (door == null) return;
 
-        bool vrGrab = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, controller);
+        //  CHANGED HERE (A / X button instead of trigger)
+        bool vrGrab = OVRInput.Get(OVRInput.Button.Two, controller);
 
         float dist = Vector3.Distance(transform.position, door.position);
 
@@ -62,7 +63,7 @@ public class DoorHandle : MonoBehaviour
 
         Vector3 axis = door.TransformDirection(hinge.axis);
 
-        doorRB.AddTorque(axis * delta * torqueStrength, ForceMode.VelocityChange);
+        doorRB.AddTorque(axis * delta * torqueStrength, ForceMode.Force);
 
         lastAngle = currentAngle;
     }
