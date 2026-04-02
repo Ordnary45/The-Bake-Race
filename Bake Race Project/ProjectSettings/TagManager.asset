@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Pan
   - Door
+  - Cabinet1
+  - Cabinet2
   layers:
   - Default
   - TransparentFX
