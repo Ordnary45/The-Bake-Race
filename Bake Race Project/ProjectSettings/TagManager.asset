@@ -8,6 +8,7 @@ TagManager:
   - Door
   - Cabinet1
   - Cabinet2
+  - Bun
   layers:
   - Default
   - TransparentFX
