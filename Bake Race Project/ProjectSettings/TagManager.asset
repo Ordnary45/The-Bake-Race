@@ -11,6 +11,7 @@ TagManager:
   - Bun
   - Cheese
   - Onion
+  - Patty
   layers:
   - Default
   - TransparentFX
