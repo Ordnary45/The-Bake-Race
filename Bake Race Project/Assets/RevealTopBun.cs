@@ -2,25 +2,22 @@ using UnityEngine;
 
 public class addTopBun : MonoBehaviour
 {
-    public GameObject finalTopBun; // top bun mesh
-    public Transform plate;         // finalPlate object
-    public float revealDistance = 1.0f; // how close a Bun needs to be
+    public GameObject finalTopBun;
+    public Transform plate;
+    public float revealDistance = 1.0f;
 
     private Renderer rend;
 
     void Start()
     {
-        // Start invisible
         rend = finalTopBun.GetComponent<Renderer>();
         rend.enabled = false;
     }
 
     void Update()
     {
-        // Already revealed? Don't check anymore
         if (rend.enabled) return;
 
-        // Find all GameObjects tagged "Bun"
         GameObject[] buns = GameObject.FindGameObjectsWithTag("Bun");
 
         foreach (GameObject bun in buns)
@@ -29,9 +26,9 @@ public class addTopBun : MonoBehaviour
 
             if (distance <= revealDistance)
             {
-                rend.enabled = true;   // show the top bun
-                bun.SetActive(false);  // hide the nearby bun
-                return;                // stop checking after the first nearby bun
+                rend.enabled = true;
+                bun.SetActive(false);
+                return;
             }
         }
     }
