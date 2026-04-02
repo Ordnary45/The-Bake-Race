@@ -10,6 +10,7 @@ TagManager:
   - Cabinet2
   - Bun
   - Cheese
+  - Onion
   layers:
   - Default
   - TransparentFX
