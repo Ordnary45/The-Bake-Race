@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class addTopBun : MonoBehaviour
+public class RevealTopBun : MonoBehaviour
 {
     public GameObject finalTopBun; // top bun mesh
     public Transform plate;         // finalPlate object

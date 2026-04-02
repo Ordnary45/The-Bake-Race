@@ -9,6 +9,7 @@ TagManager:
   - Cabinet1
   - Cabinet2
   - Bun
+  - Cheese
   layers:
   - Default
   - TransparentFX
