@@ -4,7 +4,7 @@ public class addCheese : MonoBehaviour
 {
     public GameObject finalCheese;
     public Transform plate;
-    public float revealDistance = 1.0f;
+    public float revealDistance = 0.25f; //1.0f;
 
     private Renderer rend;
 
