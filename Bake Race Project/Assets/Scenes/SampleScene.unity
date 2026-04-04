@@ -2140,6 +2140,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6707627500116483752, guid: 77b7fac0de54646a88779280f82edf75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1143475415}
+    - targetCorrespondingSourceObject: {fileID: 6707627500116483752, guid: 77b7fac0de54646a88779280f82edf75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1143475416}
     - targetCorrespondingSourceObject: {fileID: 1672522333479649240, guid: 77b7fac0de54646a88779280f82edf75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1696988165}
@@ -8467,6 +8470,18 @@ MonoBehaviour:
   finalBottomBun: {fileID: 1834254141}
   plate: {fileID: 152075439}
   revealDistance: 0.25
+--- !u!114 &1143475416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143475403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08cf2ff3a697847ffadffd0bd62925b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BurgerController
 --- !u!1001 &1144410389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9345,7 +9360,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!4 &1221487677 stripped
 Transform:
