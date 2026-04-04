@@ -5,13 +5,11 @@ public class addBuns : MonoBehaviour
     public GameObject finalTopBun;
     public GameObject finalBottomBun;
     public Transform plate;
-    public float revealDistance = 0.25f; //1.0f;
+    public float revealDistance = 0.25f;
 
     private Renderer topRend, bottomRend;
 
     private static int bunCount = 0;
-
-    private bool bunPlaced = false;
 
     void Start()
     {
@@ -32,29 +30,17 @@ public class addBuns : MonoBehaviour
         {
             float distance = Vector3.Distance(bun.transform.position, plate.position);
 
-            if (distance <= revealDistance && !bunPlaced)
+            if (distance <= revealDistance)
             {
-                bunPlaced = true; // lock so we only process this bun once
-
-                bunCount++;
-
-                if (bunCount == 1)
+                if (bunCount == 0)
                     bottomRend.enabled = true;
-                else if (bunCount == 2)
+                else if (bunCount == 1)
                     topRend.enabled = true;
 
+                bunCount++;
                 bun.SetActive(false);
-
-                // reset after a short delay so next bun works
-                Invoke(nameof(ResetBunPlaced), 0.2f);
-
                 return;
             }
         }
-    }
-
-    void ResetBunPlaced()
-    {
-        bunPlaced = false;
     }
 }
