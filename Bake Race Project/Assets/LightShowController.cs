@@ -10,13 +10,9 @@ public class LightShowController : MonoBehaviour
     public float colourSpeed = 1f;
 
     [Header("Intensity Settings")]
-    public float minIntensity = 0.5f;
-    public float maxIntensity = 3f;
+    public float minIntensity = 5f;
+    public float maxIntensity = 20f;
     public float pulseSpeed = 2f;
-
-    [Header("Rotation Settings")]
-    public Transform[] rotatingLights;
-    public float rotationSpeed = 45f;
 
     private float time;
 
@@ -33,12 +29,6 @@ public class LightShowController : MonoBehaviour
             float intensity = Mathf.Lerp(minIntensity, maxIntensity,
                                          Mathf.PingPong(time * pulseSpeed, 1f));
             light.intensity = intensity;
-        }
-
-        // Rotate lights
-        foreach (var rot in rotatingLights)
-        {
-            rot.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         }
     }
 }
