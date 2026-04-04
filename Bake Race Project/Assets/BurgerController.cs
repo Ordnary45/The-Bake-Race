@@ -13,6 +13,10 @@ public class BurgerController : MonoBehaviour
     private addOnion addOnion;
     private addTopBun addTopBun;
 
+    public GameObject notebook;
+    public Material[] stepMaterials;
+    private Renderer cubeRenderer;
+
     void Start()
     {
         // Grab each ingredient script separately
@@ -24,6 +28,13 @@ public class BurgerController : MonoBehaviour
         addPickles = GetComponent<addPickles>();
         addOnion = GetComponent<addOnion>();
         addTopBun = GetComponent<addTopBun>();
+
+        if (notebook != null)
+    {
+        Transform cube = notebook.transform.Find("Cube");
+        if (cube != null)
+            cubeRenderer = cube.GetComponent<Renderer>();
+    }
     }
 
     void Update()
@@ -32,36 +43,76 @@ public class BurgerController : MonoBehaviour
         {
             case 0:
                 addBottomBun.TryAddIngredient();
-                if (addBottomBun.IsAdded()) step++;
+                if (addBottomBun.IsAdded())
+                {
+                    ChangeNotebookMaterial(step);
+                    step++;
+                }
                 break;
             case 1:
                 addLettuce.TryAddIngredient();
-                if (addLettuce.IsAdded()) step++;
+                if (addLettuce.IsAdded())
+                {
+                    ChangeNotebookMaterial(step);
+                    step++;
+                }
                 break;
             case 2:
                 addTomato.TryAddIngredient();
-                if (addTomato.IsAdded()) step++;
+                if (addTomato.IsAdded())
+                {
+                    ChangeNotebookMaterial(step);
+                    step++;
+                }
                 break;
             case 3:
                 addPatty.TryAddIngredient();
-                if (addPatty.IsAdded()) step++;
+                if (addPatty.IsAdded())
+                {
+                    ChangeNotebookMaterial(step);
+                    step++;
+                }
                 break;
             case 4:
                 addCheese.TryAddIngredient();
-                if (addCheese.IsAdded()) step++;
+                if (addCheese.IsAdded())
+                {
+                    ChangeNotebookMaterial(step);
+                    step++;
+                }
                 break;
             case 5:
                 addPickles.TryAddIngredient();
-                if (addPickles.IsAdded()) step++;
+                if (addPickles.IsAdded())
+                {
+                    ChangeNotebookMaterial(step);
+                    step++;
+                }
                 break;
             case 6:
                 addOnion.TryAddIngredient();
-                if (addOnion.IsAdded()) step++;
+                if (addOnion.IsAdded())
+                {
+                    ChangeNotebookMaterial(step);
+                    step++;
+                }
                 break;
             case 7:
                 addTopBun.TryAddIngredient();
-                if (addTopBun.IsAdded()) step++;
+                if (addTopBun.IsAdded())
+                {
+                    ChangeNotebookMaterial(step);
+                    step++;
+                }
                 break;
+        }
+    }
+
+    private void ChangeNotebookMaterial(int stepIndex)
+    {
+        if (cubeRenderer != null && stepMaterials != null && stepIndex < stepMaterials.Length)
+        {
+            cubeRenderer.material = stepMaterials[stepIndex];
         }
     }
 }
