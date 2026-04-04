@@ -4,9 +4,10 @@ public class addTopBun : MonoBehaviour
 {
     public GameObject finalTopBun;
     public Transform plate;
-    public float revealDistance = 0.25f; //1.0f;
+    public float revealDistance = 0.25f;
 
     private Renderer rend;
+    private bool added = false;
 
     void Start()
     {
@@ -14,22 +15,22 @@ public class addTopBun : MonoBehaviour
         rend.enabled = false;
     }
 
-    void Update()
+    public void TryAddIngredient()
     {
-        if (rend.enabled) return;
+        if (added) return;
 
         GameObject[] buns = GameObject.FindGameObjectsWithTag("Bun");
-
         foreach (GameObject bun in buns)
         {
-            float distance = Vector3.Distance(bun.transform.position, plate.position);
-
-            if (distance <= revealDistance)
+            if (Vector3.Distance(bun.transform.position, plate.position) <= revealDistance)
             {
                 rend.enabled = true;
                 bun.SetActive(false);
+                added = true;
                 return;
             }
         }
     }
+
+    public bool IsAdded() => added;
 }

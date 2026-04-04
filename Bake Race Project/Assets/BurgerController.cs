@@ -4,26 +4,26 @@ public class BurgerController : MonoBehaviour
 {
     private int step = 0;
 
-    private addBuns addBottomBun;
+    private addBottomBun addBottomBun;
     private addLettuce addLettuce;
     private addTomato addTomato;
     private addPatty addPatty;
     private addCheese addCheese;
     private addPickles addPickles;
     private addOnion addOnion;
-    private addBuns addTopBun;
+    private addTopBun addTopBun;
 
     void Start()
     {
-        // Automatically grab all ingredient scripts attached to this GameObject
-        addBottomBun = GetComponent<addBuns>();  // first bun
+        // Grab each ingredient script separately
+        addBottomBun = GetComponent<addBottomBun>();
         addLettuce = GetComponent<addLettuce>();
         addTomato = GetComponent<addTomato>();
         addPatty = GetComponent<addPatty>();
         addCheese = GetComponent<addCheese>();
         addPickles = GetComponent<addPickles>();
         addOnion = GetComponent<addOnion>();
-        addTopBun = GetComponent<addBuns>();    // last bun
+        addTopBun = GetComponent<addTopBun>();
     }
 
     void Update()
