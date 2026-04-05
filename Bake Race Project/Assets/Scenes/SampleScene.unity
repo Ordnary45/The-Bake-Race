@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 30819028}
   - component: {fileID: 30819027}
   - component: {fileID: 30819026}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ISDK_HandGrabInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1674,14 +1674,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliceableObj
   crossSectionMaterial: {fileID: 2100000, guid: 900855a6eb118474ea6cd086befd517a, type: 2}
   maxSlices: 4
-  minSliceVelocity: 0.5
   canBeSliced: 1
   sliceInvincibilityTime: 0.5
-  mass: 2
-  bounceForce: 2
-  upwardForceMultiplier: 0.5
   sliceSound: {fileID: 8300000, guid: 8d5ae3acfb286c64387a32d84a1a843f, type: 3}
-  ISDK: {fileID: 1948212291}
 --- !u!64 &299199121
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2956,12 +2951,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1478282350816276, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1478282350816276, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
       propertyPath: m_TagString
       value: Onion
       objectReference: {fileID: 0}
     - target: {fileID: 1500203809658142, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
       propertyPath: m_Name
       value: Onion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500203809658142, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1500203809658142, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
       propertyPath: m_TagString
@@ -3016,6 +3019,38 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4455026889930626, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931468559279214, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931468559279214, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931468559279214, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931468559279214, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931468559279214, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931468559279214, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931468559279214, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931468559279214, guid: 67791c4ce16c99442ac667f6e8c08792, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
@@ -3147,14 +3182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliceableObj
   crossSectionMaterial: {fileID: 2100000, guid: ec30bb5fb00caa84aa1b717f944875a6, type: 2}
   maxSlices: 4
-  minSliceVelocity: 0.5
   canBeSliced: 1
   sliceInvincibilityTime: 0.5
-  mass: 2
-  bounceForce: 2
-  upwardForceMultiplier: 0.5
   sliceSound: {fileID: 8300000, guid: 8d5ae3acfb286c64387a32d84a1a843f, type: 3}
-  ISDK: {fileID: 1557082898}
 --- !u!64 &506625061
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4071,8 +4101,16 @@ PrefabInstance:
       value: Tomato
       objectReference: {fileID: 0}
     - target: {fileID: 1004846731592950, guid: 631b072a88243ca4c99acaa4414cd28f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004846731592950, guid: 631b072a88243ca4c99acaa4414cd28f, type: 3}
       propertyPath: m_TagString
       value: Tomato
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186953231683728, guid: 631b072a88243ca4c99acaa4414cd28f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1186953231683728, guid: 631b072a88243ca4c99acaa4414cd28f, type: 3}
       propertyPath: m_TagString
@@ -4169,7 +4207,7 @@ PrefabInstance:
     - {fileID: 1159722152654824, guid: 631b072a88243ca4c99acaa4414cd28f, type: 3}
     - {fileID: 1839609685006210, guid: 631b072a88243ca4c99acaa4414cd28f, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4577794943211516, guid: 631b072a88243ca4c99acaa4414cd28f, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 4583810448758580, guid: 631b072a88243ca4c99acaa4414cd28f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1833977817}
     m_AddedComponents:
@@ -4284,14 +4322,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliceableObj
   crossSectionMaterial: {fileID: 2100000, guid: 4a9303184a1a6e44c85a49d769b6260d, type: 2}
   maxSlices: 4
-  minSliceVelocity: 0.5
   canBeSliced: 1
   sliceInvincibilityTime: 0.5
-  mass: 2
-  bounceForce: 2
-  upwardForceMultiplier: 0.5
   sliceSound: {fileID: 8300000, guid: 8d5ae3acfb286c64387a32d84a1a843f, type: 3}
-  ISDK: {fileID: 0}
 --- !u!64 &651063298
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4314,9 +4347,9 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300006, guid: 02fece05d50850b4581df192f6bc3df8, type: 3}
---- !u!4 &651063300 stripped
+--- !u!4 &651063301 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4577794943211516, guid: 631b072a88243ca4c99acaa4414cd28f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4583810448758580, guid: 631b072a88243ca4c99acaa4414cd28f, type: 3}
   m_PrefabInstance: {fileID: 651063290}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &656267163 stripped
@@ -4385,6 +4418,10 @@ PrefabInstance:
       value: CheeseBlock
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5b809b89bbc8ca042a08ae9838e40440, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5b809b89bbc8ca042a08ae9838e40440, type: 3}
       propertyPath: m_TagString
       value: Cheese
       objectReference: {fileID: 0}
@@ -4395,6 +4432,10 @@ PrefabInstance:
     - target: {fileID: 100004, guid: 5b809b89bbc8ca042a08ae9838e40440, type: 3}
       propertyPath: m_TagString
       value: Cheese
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 5b809b89bbc8ca042a08ae9838e40440, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 5b809b89bbc8ca042a08ae9838e40440, type: 3}
       propertyPath: m_TagString
@@ -5107,14 +5148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliceableObj
   crossSectionMaterial: {fileID: 2100000, guid: a67d99429c0b7a14695eb831b8ba71d7, type: 2}
   maxSlices: 4
-  minSliceVelocity: 0.5
   canBeSliced: 1
   sliceInvincibilityTime: 0.5
-  mass: 2
-  bounceForce: 2
-  upwardForceMultiplier: 0.5
   sliceSound: {fileID: 8300000, guid: 8d5ae3acfb286c64387a32d84a1a843f, type: 3}
-  ISDK: {fileID: 1655407736}
 --- !u!64 &729470962
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5167,7 +5203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 741712183}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: startPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5618,7 +5654,7 @@ GameObject:
   - component: {fileID: 772417525}
   - component: {fileID: 772417524}
   - component: {fileID: 772417527}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5634,7 +5670,7 @@ Transform:
   m_GameObject: {fileID: 772417522}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1729, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5733,14 +5769,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliceableObj
   crossSectionMaterial: {fileID: 2100000, guid: 9851770ee5c5b4a6b9416188bb2628fb, type: 2}
   maxSlices: 4
-  minSliceVelocity: 0.5
   canBeSliced: 1
   sliceInvincibilityTime: 0.5
-  mass: 2
-  bounceForce: 2
-  upwardForceMultiplier: 0.5
   sliceSound: {fileID: 8300000, guid: 8d5ae3acfb286c64387a32d84a1a843f, type: 3}
-  ISDK: {fileID: 1391378254}
 --- !u!1 &780485561
 GameObject:
   m_ObjectHideFlags: 0
@@ -5975,6 +6006,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6f572a96f8a366547bf1fe51ab1c80f0, type: 3}
       propertyPath: m_Name
       value: Knife08_3mat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f572a96f8a366547bf1fe51ab1c80f0, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7372,14 +7407,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliceableObj
   crossSectionMaterial: {fileID: 0}
   maxSlices: 5
-  minSliceVelocity: 0.5
   canBeSliced: 0
   sliceInvincibilityTime: 0.2
-  mass: 1
-  bounceForce: 2
-  upwardForceMultiplier: 0.5
   sliceSound: {fileID: 0}
-  ISDK: {fileID: 0}
 --- !u!54 &1034232288
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8710,7 +8740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1169202855}
   - component: {fileID: 1169202856}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: endPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10732,7 +10762,7 @@ GameObject:
   - component: {fileID: 1391378255}
   - component: {fileID: 1391378257}
   - component: {fileID: 1391378256}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ISDK_HandGrabInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10919,11 +10949,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2318484304586491958, guid: 9795f193ba8c1064f86ffeddf9ec1ea2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.589
+      value: -3.863
       objectReference: {fileID: 0}
     - target: {fileID: 2318484304586491958, guid: 9795f193ba8c1064f86ffeddf9ec1ea2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.018
+      value: 1.997
       objectReference: {fileID: 0}
     - target: {fileID: 2318484304586491958, guid: 9795f193ba8c1064f86ffeddf9ec1ea2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10961,9 +10991,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: cucumber_full
       objectReference: {fileID: 0}
+    - target: {fileID: 3127531810196689548, guid: 9795f193ba8c1064f86ffeddf9ec1ea2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3487974055371191129, guid: 9795f193ba8c1064f86ffeddf9ec1ea2, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1694253572129900435, guid: 9795f193ba8c1064f86ffeddf9ec1ea2, type: 3}
@@ -11867,6 +11901,10 @@ PrefabInstance:
       value: lettuce_full
       objectReference: {fileID: 0}
     - target: {fileID: 8063675697525828219, guid: e8b87511118bfe34db9f58498f4ce479, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8063675697525828219, guid: e8b87511118bfe34db9f58498f4ce479, type: 3}
       propertyPath: m_TagString
       value: Lettuce
       objectReference: {fileID: 0}
@@ -12246,7 +12284,7 @@ GameObject:
   - component: {fileID: 1557082899}
   - component: {fileID: 1557082901}
   - component: {fileID: 1557082900}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ISDK_HandGrabInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14233,14 +14271,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliceableObj
   crossSectionMaterial: {fileID: 2100000, guid: 900855a6eb118474ea6cd086befd517a, type: 2}
   maxSlices: 4
-  minSliceVelocity: 0.5
   canBeSliced: 1
   sliceInvincibilityTime: 0.5
-  mass: 2
-  bounceForce: 2
-  upwardForceMultiplier: 0.5
   sliceSound: {fileID: 8300000, guid: 8d5ae3acfb286c64387a32d84a1a843f, type: 3}
-  ISDK: {fileID: 1516927094}
 --- !u!64 &1802411598
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14331,7 +14364,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 651063300}
+  m_Father: {fileID: 651063301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1833977818
 MonoBehaviour:
@@ -14635,7 +14668,7 @@ GameObject:
   - component: {fileID: 1848514015}
   - component: {fileID: 1848514017}
   - component: {fileID: 1848514016}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ISDK_HandGrabInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15374,7 +15407,7 @@ GameObject:
   - component: {fileID: 1903992566}
   - component: {fileID: 1903992565}
   - component: {fileID: 1903992564}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Renderer
   m_TagString: Lettuce
   m_Icon: {fileID: 0}
@@ -15410,14 +15443,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliceableObj
   crossSectionMaterial: {fileID: 2100000, guid: 1ee7799a0844b426a9f19508545f7a36, type: 2}
   maxSlices: 4
-  minSliceVelocity: 0.5
   canBeSliced: 1
   sliceInvincibilityTime: 0.5
-  mass: 2
-  bounceForce: 2
-  upwardForceMultiplier: 0.5
   sliceSound: {fileID: 8300000, guid: 8d5ae3acfb286c64387a32d84a1a843f, type: 3}
-  ISDK: {fileID: 1848514014}
 --- !u!64 &1903992565
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15684,7 +15712,7 @@ GameObject:
   - component: {fileID: 1929228416}
   - component: {fileID: 1929228418}
   - component: {fileID: 1929228417}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ISDK_HandGrabInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16686,14 +16714,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliceableObj
   crossSectionMaterial: {fileID: 2100000, guid: a67d99429c0b7a14695eb831b8ba71d7, type: 2}
   maxSlices: 4
-  minSliceVelocity: 0.5
   canBeSliced: 1
   sliceInvincibilityTime: 0.5
-  mass: 2
-  bounceForce: 2
-  upwardForceMultiplier: 0.5
   sliceSound: {fileID: 8300000, guid: 8d5ae3acfb286c64387a32d84a1a843f, type: 3}
-  ISDK: {fileID: 1929228415}
 --- !u!64 &2083114113
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19517,8 +19540,6 @@ SceneRoots:
   - {fileID: 1637198463}
   - {fileID: 882218160}
   - {fileID: 1911080939}
-  - {fileID: 651063290}
-  - {fileID: 729470954}
   - {fileID: 1151245612}
   - {fileID: 1385809927}
   - {fileID: 997941912}
@@ -19579,6 +19600,8 @@ SceneRoots:
   - {fileID: 991759388}
   - {fileID: 1802411590}
   - {fileID: 506625053}
+  - {fileID: 651063290}
+  - {fileID: 729470954}
   - {fileID: 1412679133}
   - {fileID: 1526675726}
   - {fileID: 678500931}

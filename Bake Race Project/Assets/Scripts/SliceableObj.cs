@@ -9,17 +9,11 @@ public class SliceableObj : MonoBehaviour
     [Header("Slice Settings")]
     public Material crossSectionMaterial;
     public int maxSlices = 4; // Maximum number of times this object can be sliced
-    public float minSliceVelocity = 0.5f;
     public bool canBeSliced = true;
     public float sliceInvincibilityTime = 0.5f; // Time before object can be sliced again
 
     [Header("Physics Settings")]
-    public float mass = 2f;
-    public float bounceForce = 2f;
-    public float upwardForceMultiplier = 0.5f;
     public AudioClip sliceSound;
-    public GameObject ISDK;
-
     private int sliceCount = 0;
     private List<GameObject> slicedPieces = new List<GameObject>();
     private float lastSliceTime = -999f;
@@ -30,12 +24,6 @@ public class SliceableObj : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Set initial rigidbody properties if it exists
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.mass = mass;
-        }
 
         // If no cross-section material is assigned, try to find one
         if (crossSectionMaterial == null)
@@ -81,22 +69,8 @@ public class SliceableObj : MonoBehaviour
             newSliceable.StartCoroutine(newSliceable.TemporaryDisableSlicing(sliceInvincibilityTime));
             newSliceable.crossSectionMaterial = crossSectionMaterial;
             newSliceable.maxSlices = maxSlices - sliceCount;
-            newSliceable.minSliceVelocity = minSliceVelocity;
-            newSliceable.mass = mass / 2f; // Pieces are lighter
-            newSliceable.bounceForce = bounceForce;
-            newSliceable.upwardForceMultiplier = upwardForceMultiplier;
             newSliceable.sliceInvincibilityTime = sliceInvincibilityTime;
-            newSliceable.ISDK = ISDK;
-            /*
-            GameObject parent = Instantiate(transform.parent.gameObject);
-            Debug.Log("Parent: " + parent.transform.GetChild(0));
-            Destroy(parent.transform.GetChild(0).gameObject);
-            piece.transform.position = parent.transform.position;
-            newSliceable.transform.SetParent(parent.transform);
-            */
-            //GameObject copy = Instantiate(ISDK,piece.transform.parent);
-            //copy.transform.SetSiblingIndex(ISDK.transform.GetSiblingIndex() + 1);
-
+            newSliceable.sliceSound = sliceSound;
         }
     }
 
