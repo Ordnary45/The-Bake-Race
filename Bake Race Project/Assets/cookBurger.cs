@@ -20,38 +20,32 @@ public class cookBurger : MonoBehaviour
 
     void Update()
     {
-         // Keep UI above patty -- commented out to mount timer on wall
-        // if (timerText != null)
-        // {
-        //     timerText.transform.position = transform.position + Vector3.up * 1f;
-        // }
-
-        // Handle cooking here instead of OnCollisionStay
+        // if patty is on the pan AND is not yet cooked
         if (touchingPan && !isCooked)
         {
             timer += Time.deltaTime;
 
-            // float remaining = cookTime - timer;
-            // timerText.text = remaining.ToString("F1") + "s";
-
+            // obtaining timer values
             float remaining = cookTime - timer;
-
             int minutes = Mathf.FloorToInt(remaining / 60f);
             int seconds = Mathf.FloorToInt(remaining % 60f);
             int milliseconds = Mathf.FloorToInt((remaining * 1000f) % 1000f);
 
+            // displaying timer text
             timerText.text = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
 
+            // color the timer green once cooking has completed
             if (timer >= cookTime)
             {
-                rend.material = cookedMaterial;
-                isCooked = true;
-                timerText.text = "00:00:000";
-                timerText.color = Color.green;
+                rend.material = cookedMaterial;     // update patty material from raw to cooked
+                isCooked = true;                    // set cooked flag to true
+                timerText.text = "00:00:000";       // keep timer at zeroes
+                timerText.color = Color.green;      // color timer text green
             }
         }
     }
 
+    // called when patty comes into contact with pan
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Pan"))
@@ -60,6 +54,7 @@ public class cookBurger : MonoBehaviour
         }
     }
 
+    // if patty exits pan prematurely, restart cooking progress
     void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Pan") && !isCooked)

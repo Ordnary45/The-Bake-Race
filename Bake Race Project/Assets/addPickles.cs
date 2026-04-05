@@ -7,18 +7,18 @@ public class addPickles : MonoBehaviour
     public float revealDistance = 0.25f;
 
     private Renderer rend;
-    private bool added = false; // new flag
+    private bool added = false; // flag for keeping track if ingredient has already been added
 
     void Start()
     {
-        rend = finalPickles.GetComponent<Renderer>();
-        rend.enabled = false;
+        rend = finalPickles.GetComponent<Renderer>();   // grab ingredient mesh
+        rend.enabled = false;                           // ensure disabled by default
     }
 
-    // new method called by the controller
+    // instead of Update() we use TryAddIngredient() called from the controller
     public void TryAddIngredient()
     {
-        if (added) return;  // already added
+        if (added) return;  // if already added
 
         GameObject[] pickles = GameObject.FindGameObjectsWithTag("Pickles");
 

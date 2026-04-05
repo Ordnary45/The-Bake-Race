@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class BurgerController : MonoBehaviour
 {
-    private int step = 0;
+    private int step = 0;                   // tracking which recipe step we are on. corresponds to switch statement
 
-    private addBottomBun addBottomBun;
+    private addBottomBun addBottomBun;      // ingredient declarations
     private addLettuce addLettuce;
     private addTomato addTomato;
     private addPatty addPatty;
@@ -14,12 +14,12 @@ public class BurgerController : MonoBehaviour
     private addTopBun addTopBun;
 
     public GameObject notebook;
-    public Material[] stepMaterials;
+    public Material[] stepMaterials;        // used for holding each new notebook material
     private Renderer cubeRenderer;
 
     void Start()
     {
-        // Grab each ingredient script separately
+        // obtain each ingredient's corresponding script
         addBottomBun = GetComponent<addBottomBun>();
         addLettuce = GetComponent<addLettuce>();
         addTomato = GetComponent<addTomato>();
@@ -30,23 +30,24 @@ public class BurgerController : MonoBehaviour
         addTopBun = GetComponent<addTopBun>();
 
         if (notebook != null)
-    {
-        Transform cube = notebook.transform.Find("Cube");
-        if (cube != null)
-            cubeRenderer = cube.GetComponent<Renderer>();
-    }
+        {
+            Transform cube = notebook.transform.Find("Cube");
+            if (cube != null)
+                cubeRenderer = cube.GetComponent<Renderer>();
+        }
     }
 
+    // switch statement for each step of the recipe
     void Update()
     {
         switch (step)
         {
             case 0:
-                addBottomBun.TryAddIngredient();
+                addBottomBun.TryAddIngredient();        // call upon ingredient's 'add' function in their corresponding script
                 if (addBottomBun.IsAdded())
                 {
-                    ChangeNotebookMaterial(step);
-                    step++;
+                    ChangeNotebookMaterial(step);       // update notebook material (aka crossing out completed step)
+                    step++;                             // incrementing step
                 }
                 break;
             case 1:
@@ -108,6 +109,7 @@ public class BurgerController : MonoBehaviour
         }
     }
 
+    // updating the material of the notebook
     private void ChangeNotebookMaterial(int stepIndex)
     {
         if (cubeRenderer != null && stepMaterials != null && stepIndex < stepMaterials.Length)
