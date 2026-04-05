@@ -14,6 +14,7 @@ TagManager:
   - Patty
   - Tomato
   - Lettuce
+  - Pressable
   layers:
   - Default
   - TransparentFX
