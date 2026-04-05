@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 739eef8c840c3f04d9667a122b367d8d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75687
+  packageName: Levers, Buttons and Switches
+  packageVersion: 1.1
+  assetPath: Assets/Levers_Buttons_Switches/Scripts/MouseLook.cs
+  uploadId: 582290

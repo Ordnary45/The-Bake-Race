@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 77fa9c491c630d64b8352cd48b12f25f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75687
+  packageName: Levers, Buttons and Switches
+  packageVersion: 1.1
+  assetPath: Assets/Levers_Buttons_Switches/Scripts/Unused/PlayerActions.cs
+  uploadId: 582290

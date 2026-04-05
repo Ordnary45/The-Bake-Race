@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8a0c769b84481394d836984da1638576
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75687
+  packageName: Levers, Buttons and Switches
+  packageVersion: 1.1
+  assetPath: Assets/Levers_Buttons_Switches/Animations/BT_02/BT_02_Animator.controller
+  uploadId: 582290

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 222e70a1667f9fd47a83f5cec96b2430
+timeCreated: 1478849957
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 75687
+  packageName: Levers, Buttons and Switches
+  packageVersion: 1.1
+  assetPath: Assets/Levers_Buttons_Switches/Materials/Switcher.mat
+  uploadId: 582290
