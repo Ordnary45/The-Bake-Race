@@ -5723,7 +5723,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9851770ee5c5b4a6b9416188bb2628fb, type: 2}
+  - {fileID: 2100000, guid: a48a08c42ae04804599e4f8fb08d63cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6138,7 +6138,6 @@ MonoBehaviour:
     m_Bits: 64
   minVelocityForCut: 0.5
   sliceCooldown: 0.1
-  upwardForceMultiplier: 0.5
   defaultCrossSectionMaterial: {fileID: 2100000, guid: 16a1066d5d1a4ce40999bb60d80e44ca, type: 2}
 --- !u!1001 &792781899
 PrefabInstance:
@@ -15493,7 +15492,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1ee7799a0844b426a9f19508545f7a36, type: 2}
+  - {fileID: 2100000, guid: 7931a2f8c26ccfc48b1d46f0b2b4efee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
