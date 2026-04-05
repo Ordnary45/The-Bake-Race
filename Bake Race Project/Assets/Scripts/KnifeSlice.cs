@@ -111,6 +111,7 @@ public class KnifeSlice : MonoBehaviour
 
         cuttable.PrepareForSlice(); //Play slice sound
         SlicedHull hull = target.Slice(endPoint.position, planeNormal); // Do the slice
+        string originalTag = target.tag;                                // Original tag
 
         if (hull != null)
         {
@@ -129,6 +130,10 @@ public class KnifeSlice : MonoBehaviour
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMat);
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMat);
 
+            // Assigning tags
+            upperHull.tag = originalTag;
+            lowerHull.tag = originalTag;
+
             // Store the HandGrab components before destroying
             HandGrabInteractable originalHandGrab = null;
             Grabbable originalGrabbable = null;
@@ -142,6 +147,10 @@ public class KnifeSlice : MonoBehaviour
             // Create new parents for both pieces with proper HandGrab setup
             GameObject upperParent = CreateNewPieceParent(originalParent, originalParentScale, upperHull, "Upper");
             GameObject lowerParent = CreateNewPieceParent(originalParent, originalParentScale, lowerHull, "Lower");
+
+            // Assigning parent tags
+            upperParent.tag = originalTag;
+            lowerParent.tag = originalTag;
 
             // Set up upper hull
             upperHull.transform.SetParent(upperParent.transform, false);
