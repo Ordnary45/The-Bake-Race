@@ -5656,7 +5656,7 @@ GameObject:
   - component: {fileID: 772417527}
   m_Layer: 6
   m_Name: Renderer
-  m_TagString: Untagged
+  m_TagString: Pickles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
