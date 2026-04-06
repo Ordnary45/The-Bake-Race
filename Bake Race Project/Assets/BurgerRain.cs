@@ -5,7 +5,7 @@ public class BurgerRain : MonoBehaviour
     public GameObject burgerPrefab;
     public float spawnRate = 3f; // burgers per second
     public Vector3 areaSize = new Vector3(10, 1, 10);
-
+    public float burgerLifetime = 6f;
     private float timer;
 
     void Update()
@@ -26,7 +26,10 @@ public class BurgerRain : MonoBehaviour
             Random.Range(-areaSize.y / 2, areaSize.y / 2),
             Random.Range(-areaSize.z / 2, areaSize.z / 2)
         );
+        GameObject newBurger = Instantiate(burgerPrefab, randomPos, Quaternion.identity);
 
-        Instantiate(burgerPrefab, randomPos, Quaternion.identity);
+        // Destroy the burger after burgerLifetime seconds
+        Destroy(newBurger, burgerLifetime);
+
     }
 }
