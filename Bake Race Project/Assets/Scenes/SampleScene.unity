@@ -1819,6 +1819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: finalBurger
       objectReference: {fileID: 0}
+    - target: {fileID: 6814765773653617878, guid: 77b7fac0de54646a88779280f82edf75, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1ee7799a0844b426a9f19508545f7a36, type: 2}
     - target: {fileID: 6873076934067125489, guid: 77b7fac0de54646a88779280f82edf75, type: 3}
       propertyPath: m_Name
       value: final_pickles
