@@ -3822,7 +3822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::cookBurger
   cookedMaterial: {fileID: 2100000, guid: 9125d588e57cafb4091a91d4503c5542, type: 2}
   burntMaterial: {fileID: 2100000, guid: 16a1066d5d1a4ce40999bb60d80e44ca, type: 2}
-  cookTime: 5
+  cookTime: 60
   burnTime: 70
   timerText: {fileID: 532256609}
 --- !u!136 &631987143
@@ -5638,7 +5638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::cookBurger
   cookedMaterial: {fileID: 2100000, guid: 9125d588e57cafb4091a91d4503c5542, type: 2}
   burntMaterial: {fileID: 2100000, guid: 16a1066d5d1a4ce40999bb60d80e44ca, type: 2}
-  cookTime: 5
+  cookTime: 60
   burnTime: 70
   timerText: {fileID: 532256609}
 --- !u!136 &780485566
@@ -14477,7 +14477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::cookBurger
   cookedMaterial: {fileID: 2100000, guid: 9125d588e57cafb4091a91d4503c5542, type: 2}
   burntMaterial: {fileID: 2100000, guid: 16a1066d5d1a4ce40999bb60d80e44ca, type: 2}
-  cookTime: 5
+  cookTime: 60
   burnTime: 70
   timerText: {fileID: 532256609}
 --- !u!136 &1855426171
