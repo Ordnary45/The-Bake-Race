@@ -3821,7 +3821,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cookBurger
   cookedMaterial: {fileID: 2100000, guid: 9125d588e57cafb4091a91d4503c5542, type: 2}
+  burntMaterial: {fileID: 2100000, guid: 16a1066d5d1a4ce40999bb60d80e44ca, type: 2}
   cookTime: 5
+  burnTime: 70
   timerText: {fileID: 532256609}
 --- !u!136 &631987143
 CapsuleCollider:
@@ -5635,7 +5637,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cookBurger
   cookedMaterial: {fileID: 2100000, guid: 9125d588e57cafb4091a91d4503c5542, type: 2}
+  burntMaterial: {fileID: 2100000, guid: 16a1066d5d1a4ce40999bb60d80e44ca, type: 2}
   cookTime: 5
+  burnTime: 70
   timerText: {fileID: 532256609}
 --- !u!136 &780485566
 CapsuleCollider:
@@ -5824,7 +5828,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.31974143, y: 0.07332602, z: 0.016068611}
   m_Center: {x: -0.047556914, y: -0.025595121, z: -4.656613e-10}
@@ -5853,7 +5857,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &782628379
 MonoBehaviour:
@@ -14472,7 +14476,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cookBurger
   cookedMaterial: {fileID: 2100000, guid: 9125d588e57cafb4091a91d4503c5542, type: 2}
+  burntMaterial: {fileID: 2100000, guid: 16a1066d5d1a4ce40999bb60d80e44ca, type: 2}
   cookTime: 5
+  burnTime: 70
   timerText: {fileID: 532256609}
 --- !u!136 &1855426171
 CapsuleCollider:
