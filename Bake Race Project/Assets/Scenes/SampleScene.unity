@@ -10996,6 +10996,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3127531810196689548, guid: 9795f193ba8c1064f86ffeddf9ec1ea2, type: 3}
+      propertyPath: m_TagString
+      value: Pickles
+      objectReference: {fileID: 0}
     - target: {fileID: 3487974055371191129, guid: 9795f193ba8c1064f86ffeddf9ec1ea2, type: 3}
       propertyPath: m_Enabled
       value: 1
