@@ -111,7 +111,6 @@ public class KnifeSlice : MonoBehaviour
 
         cuttable.PrepareForSlice(); //Play slice sound
         SlicedHull hull = target.Slice(endPoint.position, planeNormal); // Do the slice
-        string originalTag = target.tag;                                // Original tag
 
         if (hull != null)
         {
@@ -130,10 +129,6 @@ public class KnifeSlice : MonoBehaviour
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMat);
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMat);
 
-            // Assigning tags
-            upperHull.tag = originalTag;
-            lowerHull.tag = originalTag;
-
             // Store the HandGrab components before destroying
             HandGrabInteractable originalHandGrab = null;
             Grabbable originalGrabbable = null;
@@ -145,12 +140,8 @@ public class KnifeSlice : MonoBehaviour
             }
 
             // Create new parents for both pieces with proper HandGrab setup
-            GameObject upperParent = CreateNewPieceParent(originalParent, originalParentScale, upperHull, "Upper");
-            GameObject lowerParent = CreateNewPieceParent(originalParent, originalParentScale, lowerHull, "Lower");
-
-            // Assigning parent tags
-            upperParent.tag = originalTag;
-            lowerParent.tag = originalTag;
+            GameObject upperParent = CreateNewParent(originalParent, originalParentScale, upperHull, "Upper");
+            GameObject lowerParent = CreateNewParent(originalParent, originalParentScale, lowerHull, "Lower");
 
             // Set up upper hull
             upperHull.transform.SetParent(upperParent.transform, false);
@@ -163,6 +154,10 @@ public class KnifeSlice : MonoBehaviour
             lowerHull.transform.localPosition = Vector3.zero;
             lowerHull.transform.localRotation = Quaternion.identity;
             lowerHull.transform.localScale = Vector3.one;
+
+            //Apply tag to the new parents and its children
+            ApplyTagRecursively(upperParent, originalParent.tag);
+            ApplyTagRecursively(lowerParent, originalParent.tag);
 
             // Apply slice mesh and set layer
             SetSliced(upperHull, cuttable);
@@ -203,7 +198,7 @@ public class KnifeSlice : MonoBehaviour
     }
 
     // Helper method to make anew parent for sliced pieces
-    private GameObject CreateNewPieceParent(Transform originalParent, Vector3 originalScale, GameObject hull, string pieceName)
+    private GameObject CreateNewParent(Transform originalParent, Vector3 originalScale, GameObject hull, string pieceName)
     {
         GameObject newParent = new GameObject(originalParent.name + "_" + pieceName);
 
@@ -231,17 +226,17 @@ public class KnifeSlice : MonoBehaviour
         Collider newCollider = (Collider)newParent.AddComponent(type);
 
         if (originalCollider is BoxCollider box)
-    {
-        BoxCollider newBox = newCollider as BoxCollider;
-        newBox.center = box.center;
-        newBox.size = box.size;
-    }
-    else if (originalCollider is SphereCollider sphere)
-    {
-        SphereCollider newSphere = newCollider as SphereCollider;
-        newSphere.center = sphere.center;
-        newSphere.radius = sphere.radius;
-    }
+        {
+            BoxCollider newBox = newCollider as BoxCollider;
+            newBox.center = box.center;
+            newBox.size = box.size;
+        }
+        else if (originalCollider is SphereCollider sphere)
+        {
+            SphereCollider newSphere = newCollider as SphereCollider;
+            newSphere.center = sphere.center;
+            newSphere.radius = sphere.radius;
+        }
 
         //Grabbable
         Grabbable grabbable = newParent.AddComponent<Grabbable>();
@@ -322,6 +317,17 @@ public class KnifeSlice : MonoBehaviour
                     break;
                 }
             }
+        }
+    }
+
+    // Helper method to apply the tag of the original parent to the new parent and its children
+    private void ApplyTagRecursively(GameObject obj, string tagToApply)
+    {
+        obj.tag = tagToApply;
+
+        foreach (Transform child in obj.transform)
+        {
+            ApplyTagRecursively(child.gameObject, tagToApply);
         }
     }
 }
