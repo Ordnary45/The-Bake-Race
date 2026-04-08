@@ -36,7 +36,7 @@ public class cookBurger : MonoBehaviour
 
             timerText.text = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
 
-            // COOKED state (1:00 → 1:10)
+            // COOKED state (1:00 -> 1:10)
             if (timer >= cookTime && timer <= burnTime && !isCooked)
             {
                 rend.material = cookedMaterial;
