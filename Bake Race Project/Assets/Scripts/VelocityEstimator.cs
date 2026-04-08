@@ -1,3 +1,12 @@
+////////////////////////////////////////////////////////////////////////////////
+// CODE ATTRIBUTION
+// Title: Velocity Estimator for VR Interactions
+// Source: YouTube Tutorial
+// URL: https://www.youtube.com/watch?v=GQzW6ZJFQ94
+// Author: Valem Tutorials
+// Usage: Used in Bake Race for estimating knife velocity during slicing mechanics
+////////////////////////////////////////////////////////////////////////////////
+
 using UnityEngine;
 using System.Collections;
 
