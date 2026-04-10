@@ -1,0 +1,13 @@
+List of Assets we have used with credits and links to sources
+- Meta XR All-in-One SDK by Meta
+- XR Interaction Toolkit by Unity Technologies
+- Cutlery Silverware PBR by devotid: https://assetstore.unity.com/packages/3d/props/food/cutlery-silverware-pbr-106932 
+- Food and kitchen Package by Carlos Garcia: https://assetstore.unity.com/packages/3d/props/food/food-and-kitchen-package-275879
+- Food Pack Mixed	by Brain Fail Productions: https://assetstore.unity.com/packages/3d/props/food/food-pack-mixed-154349
+- Free Kitchen - Cabinets and Equipment	by Boxx-Games Assets: https://assetstore.unity.com/packages/3d/props/interior/free-kitchen-cabinets-and-equipment-245554
+- First Person Hands by Robert Ramsay: 
+- Levers, Buttons and Switches by Meanwhile On The Moon: https://assetstore.unity.com/packages/3d/props/levers-buttons-and-switches-75687?srsltid=AfmBOop7DZCBw92k3wkkNArc3gyU6CHUFbDii8P48bvOY_zIa4q5OmOg
+- Low Poly Stylized Knife Pack by Eastern imperial eagle: https://assetstore.unity.com/packages/3d/props/weapons/low-poly-stylized-knife-pack-299272
+- Home interior low poly pack	by Pandazole: https://assetstore.unity.com/packages/3d/props/interior/pandazole-home-interior-low-poly-pack-203033
+- Picture frames with photos by 3Dfrk: https://assetstore.unity.com/packages/3d/props/interior/picture-frames-with-photos-106907
+- TV LED 30" by Dresd3D: https://assetstore.unity.com/packages/3d/props/electronics/tv-led-30-336056
